@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/features/auth/view/signup_view.dart';
 import 'package:twitter_clone/theme/theme.dart';
 
-// Client client = Client();
-// client
-//     .setEndpoint('https://cloud.appwrite.io/v1')
-//     .setProject('65db858e60b179893722')
-//     .setSelfSigned(status: true); // For self signed certificates, only use for development
-
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

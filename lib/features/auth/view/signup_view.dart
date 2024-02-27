@@ -1,20 +1,23 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/common/common.dart';
+import 'package:twitter_clone/common/widgets/title_widget.dart';
 import 'package:twitter_clone/constants/ui.dart';
+import 'package:twitter_clone/features/auth/controller/auth_controller.dart';
 import 'package:twitter_clone/features/auth/view/login_view.dart';
 import 'package:twitter_clone/features/auth/widgets/auth_input.dart';
 import 'package:twitter_clone/theme/pallete.dart';
 
-class SignupView extends StatefulWidget {
+class SignupView extends ConsumerStatefulWidget {
   static route() => MaterialPageRoute(builder: (context) => const SignupView());
   const SignupView({super.key});
 
   @override
-  State<SignupView> createState() => _SignupViewState();
+  ConsumerState<SignupView> createState() => _SignupViewState();
 }
 
-class _SignupViewState extends State<SignupView> {
+class _SignupViewState extends ConsumerState<SignupView> {
   final GlobalKey _formKey = GlobalKey();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -25,6 +28,13 @@ class _SignupViewState extends State<SignupView> {
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+  }
+
+  void onSignUp() {
+    ref.read(authControllerProvider.notifier).signUp(
+        email: _emailController.text,
+        password: _passwordController.text,
+        context: context);
   }
 
   @override
@@ -42,6 +52,7 @@ class _SignupViewState extends State<SignupView> {
               key: _formKey,
               child: Column(
                 children: [
+                  const TitleWidget(title: "Sign Up"),
                   AuthInput(
                     controller: _emailController,
                     hintText: 'Enter Email',
@@ -55,7 +66,7 @@ class _SignupViewState extends State<SignupView> {
                   Align(
                     alignment: Alignment.topRight,
                     child: RoundedSmallButton(
-                      onTap: () {},
+                      onTap: onSignUp,
                       label: "Done",
                     ),
                   ),

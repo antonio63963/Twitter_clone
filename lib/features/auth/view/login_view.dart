@@ -1,8 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:twitter_clone/common/common.dart';
+import 'package:twitter_clone/common/widgets/title_widget.dart';
 import 'package:twitter_clone/constants/ui.dart';
-import 'package:twitter_clone/features/auth/view/signup_view.dart';
 import 'package:twitter_clone/features/auth/widgets/auth_input.dart';
 import 'package:twitter_clone/theme/pallete.dart';
 
@@ -43,6 +43,7 @@ class _LoginViewState extends State<LoginView> {
               key: _formKey,
               child: Column(
                 children: [
+                  const TitleWidget(title: "Login"),
                   AuthInput(
                     controller: _emailController,
                     hintText: 'Enter Email',
@@ -73,7 +74,8 @@ class _LoginViewState extends State<LoginView> {
                           ),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              Navigator.push(context, SignupView.route());
+                              // Navigator.push(context, SignupView.route());
+                              Navigator.pop(context);
                             },
                         ),
                       ],
