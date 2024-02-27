@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:twitter_clone/constants/assets_constants.dart';
 import 'package:twitter_clone/theme/theme.dart';
 
-class UiConstants {
+class Ui {
   static AppBar appBar() {
     return AppBar(
       centerTitle: true,

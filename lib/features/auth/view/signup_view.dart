@@ -2,20 +2,19 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:twitter_clone/common/common.dart';
 import 'package:twitter_clone/constants/ui.dart';
-import 'package:twitter_clone/features/auth/view/signup_view.dart';
+import 'package:twitter_clone/features/auth/view/login_view.dart';
 import 'package:twitter_clone/features/auth/widgets/auth_input.dart';
 import 'package:twitter_clone/theme/pallete.dart';
 
-class LoginView extends StatefulWidget {
-  static route() => MaterialPageRoute(builder: (context) => const LoginView());
-
-  const LoginView({super.key});
+class SignupView extends StatefulWidget {
+  static route() => MaterialPageRoute(builder: (context) => const SignupView());
+  const SignupView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<SignupView> createState() => _SignupViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _SignupViewState extends State<SignupView> {
   final GlobalKey _formKey = GlobalKey();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -63,17 +62,17 @@ class _LoginViewState extends State<LoginView> {
                   const SizedBox(height: 40),
                   RichText(
                     text: TextSpan(
-                      text: "Dont't have an account?",
+                      text: "Already have an account?",
                       children: [
                         TextSpan(
-                          text: '  Sign Up',
+                          text: '  Login',
                           style: const TextStyle(
                             color: Pallete.blueColor,
                             fontSize: 16,
                           ),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              Navigator.push(context, SignupView.route());
+                              Navigator.push(context, LoginView.route());
                             },
                         ),
                       ],
